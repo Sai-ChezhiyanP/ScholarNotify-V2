@@ -113,7 +113,29 @@ const ScholarI18n = (() => {
             risk_moderate: "Moderate Risk",
             risk_low: "Low Risk",
             risk_safe: "Stable",
-            lang_switched_toast: "Language Updated"
+            lang_switched_toast: "Language Updated",
+
+            // Live School Snapshot & KPI Cards
+            live_snapshot_title: "Live School Snapshot",
+            institutional_state: "Institutional State",
+            live_snapshot_sub: "High-level student retention diagnostics and active intervention posture.",
+            btn_go_action_center: "Go to Action Center",
+            btn_whatsapp_batch: "Parent WhatsApp Batch",
+            card_students_monitored: "Students Monitored",
+            card_across_roster: "Across Active Roster",
+            card_view_roster: "View Roster",
+            card_high_risk: "High Risk",
+            card_severe_high_risk: "Severe & High Risk",
+            card_review_students: "Review Students",
+            card_active_cases: "Active Cases",
+            card_active_plans: "Active Plans",
+            card_manage_cases: "Manage Cases",
+            card_followups_due: "Follow-ups Due",
+            card_overdue_today: "Overdue & Due Today",
+            card_review_followups: "Review Follow-ups",
+            card_students_improving: "Students Improving",
+            card_positive_response: "Positive Response",
+            card_view_progress: "View Progress"
         },
 
         hi: {
@@ -195,7 +217,29 @@ const ScholarI18n = (() => {
             risk_moderate: "मध्यम जोखिम",
             risk_low: "कम जोखिम",
             risk_safe: "स्थिर",
-            lang_switched_toast: "भाषा सफलतापूर्वक बदली गई"
+            lang_switched_toast: "भाषा सफलतापूर्वक बदली गई",
+
+            // Live School Snapshot & KPI Cards
+            live_snapshot_title: "लाइव स्कूल स्नैपशॉट",
+            institutional_state: "संस्थागत स्थिति",
+            live_snapshot_sub: "छात्र प्रतिधारण का उच्च-स्तरीय विश्लेषण एवं सक्रिय हस्तक्षेप स्थिति।",
+            btn_go_action_center: "कार्रवाई केंद्र पर जाएं",
+            btn_whatsapp_batch: "अभिभावक व्हाट्सएप समूह अलर्ट",
+            card_students_monitored: "निगरानी अधीन छात्र",
+            card_across_roster: "सक्रिय नामावली अनुसार",
+            card_view_roster: "नामावली देखें",
+            card_high_risk: "उच्च जोखिम",
+            card_severe_high_risk: "गंभीर एवं उच्च जोखिम",
+            card_review_students: "छात्रों की समीक्षा करें",
+            card_active_cases: "सक्रिय मामले",
+            card_active_plans: "सक्रिय योजनाएं",
+            card_manage_cases: "मामले प्रबंधित करें",
+            card_followups_due: "लंबित फॉलो-अप्स",
+            card_overdue_today: "अतिदेय एवं आज देय",
+            card_review_followups: "फॉलो-अप्स की समीक्षा",
+            card_students_improving: "सुधार प्रदर्शित छात्र",
+            card_positive_response: "सकारात्मक प्रतिक्रिया",
+            card_view_progress: "प्रगति देखें"
         },
 
         gu: {
@@ -277,7 +321,29 @@ const ScholarI18n = (() => {
             risk_moderate: "મધ્યમ જોખમ",
             risk_low: "ઓછું જોખમ",
             risk_safe: "સ્થિર",
-            lang_switched_toast: "ભાષા સફળતાપૂર્વક બદલાઈ ગઈ છે"
+            lang_switched_toast: "ભાષા સફળતાપૂર્વક બદલાઈ ગઈ છે",
+
+            // Live School Snapshot & KPI Cards
+            live_snapshot_title: "લાઇવ શાળા સ્નેપશોટ",
+            institutional_state: "સંસ્થાકીય સ્થિતિ",
+            live_snapshot_sub: "વિદ્યાર્થી જાળવણીનું ઉચ્ચ-સ્તરીય વિશ્લેષણ અને સક્રિય હસ્તક્ષેપ સ્થિતિ.",
+            btn_go_action_center: "એક્શન સેન્ટર પર જાઓ",
+            btn_whatsapp_batch: "વાલી વોટ્સએપ જૂથ ચેતવણી",
+            card_students_monitored: "મોનિટર હેઠળ વિદ્યાર્થીઓ",
+            card_across_roster: "સક્રિય રોસ્ટર મુજબ",
+            card_view_roster: "રોસ્ટર જુઓ",
+            card_high_risk: "ઉચ્ચ જોખમ",
+            card_severe_high_risk: "ગંભીર અને ઉચ્ચ જોખમ",
+            card_review_students: "વિદ્યાર્થીઓની સમીક્ષા કરો",
+            card_active_cases: "સક્રિય કેસો",
+            card_active_plans: "સક્રિય યોજનાઓ",
+            card_manage_cases: "કેસો સંચાલિત કરો",
+            card_followups_due: "બાકી ફોલો-અપ્સ",
+            card_overdue_today: "મુદતવીતી અને આજે બાકી",
+            card_review_followups: "ફોલો-અપ્સની સમીક્ષા",
+            card_students_improving: "સુધરી રહેલા વિદ્યાર્થીઓ",
+            card_positive_response: "સકારાત્મક પ્રતિભાવ",
+            card_view_progress: "પ્રગતિ જુઓ"
         },
 
         mr: {

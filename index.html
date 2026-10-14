@@ -303,14 +303,24 @@
 
                             <div class="flex flex-wrap items-center gap-3 pt-1">
                                 <button onclick="switchTab('action-center')"
-                                    class="btn-emerald text-xs font-bold px-5 py-2.5 rounded-xl flex items-center gap-2 cursor-pointer shadow-sm">
+                                    class="btn-emerald text-xs font-bold px-4 py-2.5 rounded-xl flex items-center gap-2 cursor-pointer shadow-sm">
                                     <i class="fa-solid fa-bolt text-xs text-[#0B1713]"></i>
                                     <span data-i18n="hero_btn_action">Open Action Center</span>
                                 </button>
                                 <button onclick="switchTab('ews')"
-                                    class="btn-outline-mint text-xs font-semibold px-5 py-2.5 rounded-xl flex items-center gap-2 cursor-pointer">
+                                    class="btn-outline-mint text-xs font-semibold px-4 py-2.5 rounded-xl flex items-center gap-2 cursor-pointer">
                                     <i class="fa-solid fa-user-check text-xs"></i>
                                     <span data-i18n="hero_btn_risk">Explore Student Risk</span>
+                                </button>
+                                <button onclick="scrollToSection('overviewKpiAnchor')"
+                                    class="bg-[#17231F] hover:bg-[#1E2E28] hover:border-[#10B981]/60 text-[#94A39C] hover:text-[#F5F7F5] border border-[#263A32] text-xs font-semibold px-3 py-2.5 rounded-xl flex items-center gap-1.5 cursor-pointer transition-all">
+                                    <i class="fa-solid fa-chart-pie text-xs text-[#10B981]"></i>
+                                    <span>Live Snapshot</span>
+                                </button>
+                                <button onclick="scrollToSection('exploreSection')"
+                                    class="bg-[#17231F] hover:bg-[#1E2E28] hover:border-[#6EE7B7]/60 text-[#94A39C] hover:text-[#F5F7F5] border border-[#263A32] text-xs font-semibold px-3 py-2.5 rounded-xl flex items-center gap-1.5 cursor-pointer transition-all">
+                                    <i class="fa-solid fa-compass text-xs text-[#6EE7B7]"></i>
+                                    <span>Explore Modules</span>
                                 </button>
                             </div>
                         </div>
@@ -435,15 +445,15 @@
                 </div>
 
                 <!-- 3. LIVE SCHOOL SNAPSHOT (5 KPI CARDS, DISTRICT SURVEILLANCE & CHARTS) -->
-                <div id="overviewKpiAnchor" class="py-8 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto space-y-6">
+                <div id="overviewKpiAnchor" class="overview-section scroll-mt-28 py-8 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto space-y-6">
                     <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-[#263A32] pb-4">
                         <div>
                             <div class="flex items-center gap-2">
                                 <span class="w-2.5 h-2.5 rounded-full bg-[#10B981] animate-pulse"></span>
-                                <h2 class="text-xl sm:text-2xl font-extrabold text-[#F5F7F5] tracking-tight">Live School Snapshot</h2>
-                                <span class="text-[10px] font-bold px-2 py-0.5 rounded bg-[#123B2A] text-[#6EE7B7] border border-[#263A32]">Institutional State</span>
+                                <h2 class="text-xl sm:text-2xl font-extrabold text-[#F5F7F5] tracking-tight" data-i18n="live_snapshot_title">Live School Snapshot</h2>
+                                <span class="text-[10px] font-bold px-2 py-0.5 rounded bg-[#123B2A] text-[#6EE7B7] border border-[#263A32]" data-i18n="institutional_state">Institutional State</span>
                             </div>
-                            <p class="text-xs text-[#94A39C] mt-0.5" id="dashSubTitle">
+                            <p class="text-xs text-[#94A39C] mt-0.5" id="dashSubTitle" data-i18n="live_snapshot_sub">
                                 High-level student retention diagnostics and active intervention posture.
                             </p>
                         </div>
@@ -451,12 +461,12 @@
                             <button onclick="switchTab('action-center')"
                                 class="btn-emerald text-xs font-bold px-3.5 py-2 rounded-lg flex items-center gap-1.5 cursor-pointer shadow-sm">
                                 <i class="fa-solid fa-bolt text-xs text-[#0B1713]"></i>
-                                <span>Go to Action Center</span>
+                                <span data-i18n="btn_go_action_center">Go to Action Center</span>
                             </button>
                             <button onclick="triggerBatchNotification()"
                                 class="bg-[#17231F] hover:bg-[#1E2E28] text-[#F5F7F5] border border-[#263A32] text-xs font-semibold px-3 py-2 rounded-lg flex items-center gap-1.5 cursor-pointer transition-all">
                                 <i class="fa-brands fa-whatsapp text-xs text-[#10B981]"></i>
-                                <span>Parent WhatsApp Batch</span>
+                                <span data-i18n="btn_whatsapp_batch">Parent WhatsApp Batch</span>
                             </button>
                         </div>
                     </div>
@@ -464,91 +474,91 @@
                     <!-- 5 Live Overview KPI Cards -->
                     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
                         <!-- Card 1: Students Monitored -->
-                        <div onclick="switchTab('ews')" class="inst-card p-4.5 bg-[#17231F] cursor-pointer hover:border-[#10B981]/60 transition-all flex flex-col justify-between">
+                        <div onclick="switchTab('ews')" class="inst-card p-5 min-h-[148px] bg-[#17231F] cursor-pointer hover:border-[#10B981]/60 transition-all flex flex-col justify-between">
                             <div>
                                 <div class="text-[11px] font-bold text-[#94A39C] uppercase tracking-wider flex items-center justify-between">
-                                    <span>Students Monitored</span>
+                                    <span data-i18n="card_students_monitored">Students Monitored</span>
                                     <i class="fa-solid fa-users text-[#10B981] text-xs"></i>
                                 </div>
                                 <div class="text-3xl font-extrabold text-[#F5F7F5] mt-2 tracking-tight" id="statTotalStudents">--</div>
                                 <div class="text-[11px] text-[#94A39C] mt-1 flex items-center gap-1" id="statTotalSchools">
-                                    <i class="fa-solid fa-school text-[10px] text-[#6EE7B7]"></i> Across Active Roster
+                                    <i class="fa-solid fa-school text-[10px] text-[#6EE7B7]"></i> <span data-i18n="card_across_roster">Across Active Roster</span>
                                 </div>
                             </div>
-                            <div class="text-[11px] text-[#10B981] font-bold mt-3 pt-2 border-t border-[#263A32]/60 flex items-center justify-between">
-                                <span>View Roster</span>
+                            <div class="text-[11px] text-[#10B981] font-bold mt-3 pt-2.5 border-t border-[#263A32]/60 flex items-center justify-between">
+                                <span data-i18n="card_view_roster">View Roster</span>
                                 <i class="fa-solid fa-arrow-right text-[10px]"></i>
                             </div>
                         </div>
 
                         <!-- Card 2: High Risk -->
-                        <div onclick="switchTab('ews')" class="inst-card p-4.5 bg-[#17231F] border-rose-900/40 cursor-pointer hover:border-rose-500/60 transition-all flex flex-col justify-between">
+                        <div onclick="switchTab('ews')" class="inst-card p-5 min-h-[148px] bg-[#17231F] border-rose-900/40 cursor-pointer hover:border-rose-500/60 transition-all flex flex-col justify-between">
                             <div>
                                 <div class="text-[11px] font-bold text-rose-400 uppercase tracking-wider flex items-center justify-between">
-                                    <span>High Risk</span>
+                                    <span data-i18n="card_high_risk">High Risk</span>
                                     <i class="fa-solid fa-triangle-exclamation text-rose-400 text-xs"></i>
                                 </div>
                                 <div class="text-3xl font-extrabold text-rose-400 mt-2 tracking-tight" id="statFlaggedStudents">--</div>
                                 <div class="text-[11px] text-rose-300/80 mt-1 flex items-center gap-1">
-                                    <i class="fa-solid fa-bell text-[10px]"></i> Severe &amp; High Risk
+                                    <i class="fa-solid fa-bell text-[10px]"></i> <span data-i18n="card_severe_high_risk">Severe &amp; High Risk</span>
                                 </div>
                             </div>
-                            <div class="text-[11px] text-rose-400 font-bold mt-3 pt-2 border-t border-rose-900/40 flex items-center justify-between">
-                                <span>Review Students</span>
+                            <div class="text-[11px] text-rose-400 font-bold mt-3 pt-2.5 border-t border-rose-900/40 flex items-center justify-between">
+                                <span data-i18n="card_review_students">Review Students</span>
                                 <i class="fa-solid fa-arrow-right text-[10px]"></i>
                             </div>
                         </div>
 
                         <!-- Card 3: Active Intervention Cases -->
-                        <div onclick="switchTab('cases')" class="inst-card p-4.5 bg-[#17231F] border-[#93C5FD]/30 cursor-pointer hover:border-[#93C5FD]/60 transition-all flex flex-col justify-between">
+                        <div onclick="switchTab('cases')" class="inst-card p-5 min-h-[148px] bg-[#17231F] border-[#93C5FD]/30 cursor-pointer hover:border-[#93C5FD]/60 transition-all flex flex-col justify-between">
                             <div>
                                 <div class="text-[11px] font-bold text-[#93C5FD] uppercase tracking-wider flex items-center justify-between">
-                                    <span>Active Cases</span>
+                                    <span data-i18n="card_active_cases">Active Cases</span>
                                     <i class="fa-solid fa-folder-open text-[#93C5FD] text-xs"></i>
                                 </div>
                                 <div class="text-3xl font-extrabold text-[#93C5FD] mt-2 tracking-tight" id="statActiveCases">--</div>
                                 <div class="text-[11px] text-[#94A39C] mt-1 flex items-center gap-1">
-                                    <i class="fa-solid fa-file-shield text-[10px] text-[#93C5FD]"></i> Active Plans
+                                    <i class="fa-solid fa-file-shield text-[10px] text-[#93C5FD]"></i> <span data-i18n="card_active_plans">Active Plans</span>
                                 </div>
                             </div>
-                            <div class="text-[11px] text-[#93C5FD] font-bold mt-3 pt-2 border-t border-[#263A32]/60 flex items-center justify-between">
-                                <span>Manage Cases</span>
+                            <div class="text-[11px] text-[#93C5FD] font-bold mt-3 pt-2.5 border-t border-[#263A32]/60 flex items-center justify-between">
+                                <span data-i18n="card_manage_cases">Manage Cases</span>
                                 <i class="fa-solid fa-arrow-right text-[10px]"></i>
                             </div>
                         </div>
 
                         <!-- Card 4: Follow-ups Due -->
-                        <div onclick="switchTab('followups')" class="inst-card p-4.5 bg-[#17231F] border-amber-900/40 cursor-pointer hover:border-amber-500/60 transition-all flex flex-col justify-between">
+                        <div onclick="switchTab('followups')" class="inst-card p-5 min-h-[148px] bg-[#17231F] border-amber-900/40 cursor-pointer hover:border-amber-500/60 transition-all flex flex-col justify-between">
                             <div>
                                 <div class="text-[11px] font-bold text-amber-400 uppercase tracking-wider flex items-center justify-between">
-                                    <span>Follow-ups Due</span>
+                                    <span data-i18n="card_followups_due">Follow-ups Due</span>
                                     <i class="fa-solid fa-calendar-check text-amber-400 text-xs"></i>
                                 </div>
                                 <div class="text-3xl font-extrabold text-amber-400 mt-2 tracking-tight" id="statFollowupsDue">--</div>
                                 <div class="text-[11px] text-amber-300/80 mt-1 flex items-center gap-1">
-                                    <i class="fa-solid fa-clock text-[10px]"></i> Overdue &amp; Due Today
+                                    <i class="fa-solid fa-clock text-[10px]"></i> <span data-i18n="card_overdue_today">Overdue &amp; Due Today</span>
                                 </div>
                             </div>
-                            <div class="text-[11px] text-amber-400 font-bold mt-3 pt-2 border-t border-amber-900/40 flex items-center justify-between">
-                                <span>Review Follow-ups</span>
+                            <div class="text-[11px] text-amber-400 font-bold mt-3 pt-2.5 border-t border-amber-900/40 flex items-center justify-between">
+                                <span data-i18n="card_review_followups">Review Follow-ups</span>
                                 <i class="fa-solid fa-arrow-right text-[10px]"></i>
                             </div>
                         </div>
 
                         <!-- Card 5: Students Improving -->
-                        <div onclick="switchTab('cases')" class="inst-card p-4.5 bg-[#17231F] border-[#10B981]/40 cursor-pointer hover:border-[#10B981] transition-all flex flex-col justify-between">
+                        <div onclick="switchTab('cases')" class="inst-card p-5 min-h-[148px] bg-[#17231F] border-[#10B981]/40 cursor-pointer hover:border-[#10B981] transition-all flex flex-col justify-between">
                             <div>
                                 <div class="text-[11px] font-bold text-[#6EE7B7] uppercase tracking-wider flex items-center justify-between">
-                                    <span>Students Improving</span>
+                                    <span data-i18n="card_students_improving">Students Improving</span>
                                     <i class="fa-solid fa-arrow-trend-down text-[#10B981] text-xs"></i>
                                 </div>
                                 <div class="text-3xl font-extrabold text-[#10B981] mt-2 tracking-tight" id="statStudentsImproving">--</div>
                                 <div class="text-[11px] text-[#94A39C] mt-1 flex items-center gap-1">
-                                    <i class="fa-solid fa-shield-check text-[#10B981] text-[10px]"></i> Positive Response
+                                    <i class="fa-solid fa-shield-check text-[#10B981] text-[10px]"></i> <span data-i18n="card_positive_response">Positive Response</span>
                                 </div>
                             </div>
-                            <div class="text-[11px] text-[#6EE7B7] font-bold mt-3 pt-2 border-t border-[#263A32]/60 flex items-center justify-between">
-                                <span>View Progress</span>
+                            <div class="text-[11px] text-[#6EE7B7] font-bold mt-3 pt-2.5 border-t border-[#263A32]/60 flex items-center justify-between">
+                                <span data-i18n="card_view_progress">View Progress</span>
                                 <i class="fa-solid fa-arrow-right text-[10px]"></i>
                             </div>
                         </div>
@@ -701,7 +711,7 @@
                 </div>
 
                 <!-- 5. "EXPLORE SCHOLAR NOTIFY" (Grid of 11 Platform Module Cards) -->
-                <div class="py-8 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto space-y-6">
+                <div id="exploreSection" class="overview-section scroll-mt-28 py-8 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto space-y-6">
                     <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-[#263A32] pb-4">
                         <div>
                             <div class="text-[10px] font-bold tracking-widest text-[#6EE7B7] uppercase">PLATFORM NAVIGATION MAP</div>
@@ -714,7 +724,7 @@
 
                     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
                         <!-- Card 1: Overview -->
-                        <div class="inst-card p-4.5 bg-[#17231F] border-[#10B981]/50 flex flex-col justify-between">
+                        <div class="inst-card p-5 bg-[#17231F] border-[#10B981]/50 flex flex-col justify-between">
                             <div class="space-y-2.5">
                                 <div class="flex items-center justify-between">
                                     <div class="w-8 h-8 rounded-lg bg-[#123B2A] text-[#10B981] flex items-center justify-center text-sm border border-[#263A32]">
@@ -737,7 +747,7 @@
                         </div>
 
                         <!-- Card 2: Action Center -->
-                        <div class="inst-card p-4.5 bg-[#17231F] flex flex-col justify-between hover:border-[#10B981]/60 transition-all">
+                        <div class="inst-card p-5 bg-[#17231F] flex flex-col justify-between hover:border-[#10B981]/60 transition-all">
                             <div class="space-y-2.5">
                                 <div class="flex items-center justify-between">
                                     <div class="w-8 h-8 rounded-lg bg-[#123B2A] text-[#6EE7B7] flex items-center justify-center text-sm border border-[#263A32]">
@@ -760,7 +770,7 @@
                         </div>
 
                         <!-- Card 3: Early Warning -->
-                        <div class="inst-card p-4.5 bg-[#17231F] flex flex-col justify-between hover:border-[#10B981]/60 transition-all">
+                        <div class="inst-card p-5 bg-[#17231F] flex flex-col justify-between hover:border-[#10B981]/60 transition-all">
                             <div class="space-y-2.5">
                                 <div class="flex items-center justify-between">
                                     <div class="w-8 h-8 rounded-lg bg-[#123B2A] text-[#10B981] flex items-center justify-center text-sm border border-[#263A32]">
@@ -783,7 +793,7 @@
                         </div>
 
                         <!-- Card 4: Multi-Vector -->
-                        <div class="inst-card p-4.5 bg-[#17231F] flex flex-col justify-between hover:border-[#10B981]/60 transition-all">
+                        <div class="inst-card p-5 bg-[#17231F] flex flex-col justify-between hover:border-[#10B981]/60 transition-all">
                             <div class="space-y-2.5">
                                 <div class="flex items-center justify-between">
                                     <div class="w-8 h-8 rounded-lg bg-[#123B2A] text-[#6EE7B7] flex items-center justify-center text-sm border border-[#263A32]">
@@ -806,7 +816,7 @@
                         </div>
 
                         <!-- Card 5: Cases -->
-                        <div class="inst-card p-4.5 bg-[#17231F] flex flex-col justify-between hover:border-[#10B981]/60 transition-all">
+                        <div class="inst-card p-5 bg-[#17231F] flex flex-col justify-between hover:border-[#10B981]/60 transition-all">
                             <div class="space-y-2.5">
                                 <div class="flex items-center justify-between">
                                     <div class="w-8 h-8 rounded-lg bg-[#123B2A] text-[#93C5FD] flex items-center justify-center text-sm border border-[#263A32]">
@@ -829,7 +839,7 @@
                         </div>
 
                         <!-- Card 6: Follow-ups -->
-                        <div class="inst-card p-4.5 bg-[#17231F] flex flex-col justify-between hover:border-[#10B981]/60 transition-all">
+                        <div class="inst-card p-5 bg-[#17231F] flex flex-col justify-between hover:border-[#10B981]/60 transition-all">
                             <div class="space-y-2.5">
                                 <div class="flex items-center justify-between">
                                     <div class="w-8 h-8 rounded-lg bg-[#123B2A] text-amber-400 flex items-center justify-center text-sm border border-[#263A32]">
@@ -852,7 +862,7 @@
                         </div>
 
                         <!-- Card 7: Smart Intake -->
-                        <div class="inst-card p-4.5 bg-[#17231F] flex flex-col justify-between hover:border-[#10B981]/60 transition-all">
+                        <div class="inst-card p-5 bg-[#17231F] flex flex-col justify-between hover:border-[#10B981]/60 transition-all">
                             <div class="space-y-2.5">
                                 <div class="flex items-center justify-between">
                                     <div class="w-8 h-8 rounded-lg bg-[#123B2A] text-[#10B981] flex items-center justify-center text-sm border border-[#263A32]">
@@ -875,7 +885,7 @@
                         </div>
 
                         <!-- Card 8: Schemes -->
-                        <div class="inst-card p-4.5 bg-[#17231F] flex flex-col justify-between hover:border-[#10B981]/60 transition-all">
+                        <div class="inst-card p-5 bg-[#17231F] flex flex-col justify-between hover:border-[#10B981]/60 transition-all">
                             <div class="space-y-2.5">
                                 <div class="flex items-center justify-between">
                                     <div class="w-8 h-8 rounded-lg bg-[#123B2A] text-[#6EE7B7] flex items-center justify-center text-sm border border-[#263A32]">
@@ -898,7 +908,7 @@
                         </div>
 
                         <!-- Card 9: Simulator -->
-                        <div class="inst-card p-4.5 bg-[#17231F] flex flex-col justify-between hover:border-[#10B981]/60 transition-all">
+                        <div class="inst-card p-5 bg-[#17231F] flex flex-col justify-between hover:border-[#10B981]/60 transition-all">
                             <div class="space-y-2.5">
                                 <div class="flex items-center justify-between">
                                     <div class="w-8 h-8 rounded-lg bg-[#123B2A] text-[#10B981] flex items-center justify-center text-sm border border-[#263A32]">
@@ -921,7 +931,7 @@
                         </div>
 
                         <!-- Card 10: Sathi -->
-                        <div class="inst-card p-4.5 bg-[#17231F] flex flex-col justify-between hover:border-[#10B981]/60 transition-all">
+                        <div class="inst-card p-5 bg-[#17231F] flex flex-col justify-between hover:border-[#10B981]/60 transition-all">
                             <div class="space-y-2.5">
                                 <div class="flex items-center justify-between">
                                     <div class="w-8 h-8 rounded-lg bg-[#123B2A] text-[#10B981] flex items-center justify-center text-sm border border-[#263A32]">
@@ -944,7 +954,7 @@
                         </div>
 
                         <!-- Card 11: SOS / Emergency -->
-                        <div class="inst-card p-4.5 bg-[#17231F] flex flex-col justify-between hover:border-rose-500/50 transition-all">
+                        <div class="inst-card p-5 bg-[#17231F] flex flex-col justify-between hover:border-rose-500/50 transition-all">
                             <div class="space-y-2.5">
                                 <div class="flex items-center justify-between">
                                     <div class="w-8 h-8 rounded-lg bg-rose-950/60 text-rose-400 flex items-center justify-center text-sm border border-rose-900/50">
@@ -1208,7 +1218,7 @@
 
                 <!-- 4 Summary Stat Cards -->
                 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-                    <div id="acStatCardUrgent" onclick="filterActionCenterPriority('urgent')" class="inst-card p-4.5 bg-[#17231F] border-rose-900/40 cursor-pointer hover:border-rose-500/60 transition-all action-stagger-1">
+                    <div id="acStatCardUrgent" onclick="filterActionCenterPriority('urgent')" class="inst-card p-5 min-h-[135px] bg-[#17231F] border-rose-900/40 cursor-pointer hover:border-rose-500/60 transition-all action-stagger-1">
                         <div class="text-[11px] font-bold text-rose-400 uppercase tracking-wider flex items-center justify-between">
                             <span>URGENT</span>
                             <span class="w-6 h-6 rounded-lg bg-rose-950/60 text-rose-400 flex items-center justify-center text-xs"><i class="fa-solid fa-triangle-exclamation"></i></span>
@@ -1219,7 +1229,7 @@
                         </div>
                     </div>
 
-                    <div id="acStatCardHigh" onclick="filterActionCenterPriority('high')" class="inst-card p-4.5 bg-[#17231F] border-amber-900/40 cursor-pointer hover:border-amber-500/60 transition-all action-stagger-2">
+                    <div id="acStatCardHigh" onclick="filterActionCenterPriority('high')" class="inst-card p-5 min-h-[135px] bg-[#17231F] border-amber-900/40 cursor-pointer hover:border-amber-500/60 transition-all action-stagger-2">
                         <div class="text-[11px] font-bold text-amber-400 uppercase tracking-wider flex items-center justify-between">
                             <span>HIGH PRIORITY</span>
                             <span class="w-6 h-6 rounded-lg bg-amber-950/60 text-amber-400 flex items-center justify-center text-xs"><i class="fa-solid fa-bell"></i></span>
@@ -1230,7 +1240,7 @@
                         </div>
                     </div>
 
-                    <div id="acStatCardFollowups" onclick="filterActionCenterPriority('followups')" class="inst-card p-4.5 bg-[#17231F] border-sky-900/40 cursor-pointer hover:border-sky-500/60 transition-all action-stagger-3">
+                    <div id="acStatCardFollowups" onclick="filterActionCenterPriority('followups')" class="inst-card p-5 min-h-[135px] bg-[#17231F] border-sky-900/40 cursor-pointer hover:border-sky-500/60 transition-all action-stagger-3">
                         <div class="text-[11px] font-bold text-sky-400 uppercase tracking-wider flex items-center justify-between">
                             <span>FOLLOW-UPS TODAY</span>
                             <span class="w-6 h-6 rounded-lg bg-sky-950/60 text-sky-400 flex items-center justify-center text-xs"><i class="fa-solid fa-calendar-check"></i></span>
@@ -1241,7 +1251,7 @@
                         </div>
                     </div>
 
-                    <div id="acStatCardImproving" onclick="filterActionCenterPriority('improving')" class="inst-card p-4.5 bg-[#17231F] border-[#10B981]/40 cursor-pointer hover:border-[#10B981] transition-all action-stagger-4">
+                    <div id="acStatCardImproving" onclick="filterActionCenterPriority('improving')" class="inst-card p-5 min-h-[135px] bg-[#17231F] border-[#10B981]/40 cursor-pointer hover:border-[#10B981] transition-all action-stagger-4">
                         <div class="text-[11px] font-bold text-[#6EE7B7] uppercase tracking-wider flex items-center justify-between">
                             <span>STUDENTS IMPROVING</span>
                             <span class="w-6 h-6 rounded-lg bg-[#123B2A] text-[#10B981] flex items-center justify-center text-xs"><i class="fa-solid fa-arrow-trend-down"></i></span>
@@ -2876,6 +2886,12 @@
             </div>
         </footer>
     </div>
+
+    <!-- BACK TO TOP FLOATING BUTTON -->
+    <button id="backToTopBtn" onclick="scrollToTop()" title="Back to top"
+        class="btn-hidden fixed bottom-6 left-6 z-40 bg-[#17231F] hover:bg-[#1E2E28] text-[#10B981] hover:text-[#6EE7B7] border border-[#263A32] hover:border-[#10B981] w-10 h-10 rounded-full shadow-2xl flex items-center justify-center cursor-pointer transition-all group">
+        <i class="fa-solid fa-arrow-up text-xs group-hover:-translate-y-0.5 transition-transform"></i>
+    </button>
 
     <!-- NOTIFICATION TOAST -->
     <div id="toast"

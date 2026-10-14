@@ -279,24 +279,35 @@ function showDashboard() {
     loadSOSStudent();
     initDragAndDrop();
     setIntakeWorkflowStage(1);
+    initBackToTop();
 
     if (typeof ScholarI18n !== 'undefined') {
         ScholarI18n.init();
     }
+
+    // Ensure clean initial scroll
+    window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
 }
 
 // ==========================================================================
-// 5. NAVIGATION & TAB ROUTING
+// 5. NAVIGATION & TAB ROUTING & SCROLL MANAGEMENT
 // ==========================================================================
 function switchTab(tabId) {
     currentTab = tabId;
 
+    // 1. Immediately reset scroll to the top so new page does NOT open scrolled down or clipped
+    window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+    if (document.documentElement) document.documentElement.scrollTop = 0;
+    if (document.body) document.body.scrollTop = 0;
+
+    // 2. Update active tab indicator
     document.querySelectorAll('.nav-tab').forEach(btn => {
         btn.classList.remove('active-tab');
     });
     const targetTabBtn = document.getElementById(`tab-${tabId}`);
     if (targetTabBtn) targetTabBtn.classList.add('active-tab');
 
+    // 3. Switch visible section
     document.querySelectorAll('.tab-content').forEach(sec => {
         sec.classList.add('hidden');
     });
@@ -326,6 +337,37 @@ function switchTab(tabId) {
     if (typeof ScholarI18n !== 'undefined') {
         setTimeout(() => ScholarI18n.init(), 60);
     }
+}
+
+// Smooth scroll helper with sticky header offset (115px) compensation
+function scrollToSection(elementId) {
+    const el = document.getElementById(elementId);
+    if (!el) return;
+    const headerOffset = 115;
+    const elementPosition = el.getBoundingClientRect().top;
+    const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+    window.scrollTo({
+        top: Math.max(0, offsetPosition),
+        behavior: 'smooth'
+    });
+}
+
+function scrollToTop() {
+    window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
+}
+
+function initBackToTop() {
+    const btn = document.getElementById('backToTopBtn');
+    if (!btn) return;
+    window.addEventListener('scroll', () => {
+        if (window.pageYOffset > 280) {
+            btn.classList.remove('btn-hidden');
+            btn.classList.add('btn-visible');
+        } else {
+            btn.classList.remove('btn-visible');
+            btn.classList.add('btn-hidden');
+        }
+    }, { passive: true });
 }
 
 function initTabs() {
@@ -559,16 +601,27 @@ function renderVSKDashboard() {
     const elStudentsImproving = document.getElementById('statStudentsImproving');
     const elSub = document.getElementById('dashSubTitle');
 
-    // Smooth count-up animations for KPI cards (600-900ms)
+    // Smooth count-up animations for KPI cards (600-900ms) - Clean numeric values
     animateCountUp(elTotal, totalStudents, 750);
     animateCountUp(elFlagged, highRiskStudents, 800, '', ` <span class="text-xs font-semibold text-rose-400">(${flaggedPct}%)</span>`);
-    if (elActive) animateCountUp(elActive, activePlans, 700, '', activePlans > 0 ? ` Pair${activePlans > 1 ? 's' : ''}` : ' Active');
-    if (elActiveCases) animateCountUp(elActiveCases, activeCases, 750, '', ' Active');
-    if (elFollowupsDue) animateCountUp(elFollowupsDue, followupsDue, 750, '', ' Due');
-    if (elStudentsImproving) animateCountUp(elStudentsImproving, improvingCases, 750, '', ' Students');
+    if (elActive) animateCountUp(elActive, activePlans, 700);
+    if (elActiveCases) animateCountUp(elActiveCases, activeCases, 750);
+    if (elFollowupsDue) animateCountUp(elFollowupsDue, followupsDue, 750);
+    if (elStudentsImproving) animateCountUp(elStudentsImproving, improvingCases, 750);
 
     if (elSub) {
-        elSub.innerText = `Real-time risk analysis for ${totalStudents} active student profile(s) across local school clusters.`;
+        if (window.ScholarI18n && typeof window.ScholarI18n.getLanguage === 'function' && window.ScholarI18n.getLanguage() !== 'en') {
+            const currentLang = window.ScholarI18n.getLanguage();
+            if (currentLang === 'hi') {
+                elSub.innerText = `स्थानीय स्कूल समूहों में ${totalStudents} सक्रिय छात्र प्रोफाइल का वास्तविक समय जोखिम विश्लेषण।`;
+            } else if (currentLang === 'gu') {
+                elSub.innerText = `સ્થાનિક શાળા ક્લસ્ટરોમાં ${totalStudents} સક્રિય વિદ્યાર્થી પ્રોફાઇલ્સનું રીઅલ-ટાઇમ જોખમ વિશ્લેષણ.`;
+            } else {
+                elSub.innerText = `Real-time risk analysis for ${totalStudents} active student profile(s) across local school clusters.`;
+            }
+        } else {
+            elSub.innerText = `Real-time risk analysis for ${totalStudents} active student profile(s) across local school clusters.`;
+        }
     }
 
     // Hero stats
@@ -854,7 +907,11 @@ function sendSingleSMS(studentId) {
 }
 
 function triggerBatchNotification() {
-    showToast("Batch Alerts Dispatched!", `Successfully transmitted 38 bilingual WhatsApp retention alerts to parents across district.`, "success");
+    const flagged = (typeof MOCK_STUDENTS !== 'undefined' && Array.isArray(MOCK_STUDENTS))
+        ? MOCK_STUDENTS.filter(s => s.riskLevel === 'High' || s.riskLevel === 'Severe')
+        : [];
+    const count = flagged.length || 4;
+    showToast("Batch Alerts Dispatched!", `Successfully transmitted ${count} bilingual WhatsApp retention advisories to high-risk student parents across Anand cluster.`, "success");
 }
 
 // ==========================================================================
